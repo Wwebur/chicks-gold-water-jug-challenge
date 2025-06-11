@@ -114,7 +114,7 @@ export function waterJugSolver(xCap: number, yCap: number, z: number): JugState[
                 {
                     x: current.x - transferXY,
                     y: current.y + transferXY,
-                    explanation: 'Transfer from X to Y',
+                    explanation: 'Transfer from bucket X to bucket Y',
                 },
             ],
         });
@@ -129,7 +129,7 @@ export function waterJugSolver(xCap: number, yCap: number, z: number): JugState[
                 {
                     x: current.x + transferYX,
                     y: current.y - transferYX,
-                    explanation: 'Transfer from Y to X',
+                    explanation: 'Transfer from bucket Y to bucket X',
                 },
             ],
         });

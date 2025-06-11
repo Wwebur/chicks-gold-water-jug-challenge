@@ -1,13 +1,24 @@
-import { JugState, waterJugSolver } from './services/water-jug-solver';
+import { JugState, waterJugSolver } from "./services/water-jug-solver";
 
 export class MyApp {
-  xCapacity = 2;
-  yCapacity = 10;
-  targetZ = 4;
+  xCapacity: number = 2;
+  yCapacity: number = 10;
+  targetZ: number = 4;
 
-  solution: JugState[] | null = [];
+  solution: JugState[] | null = null;
 
   solve() {
-    this.solution = waterJugSolver(this.xCapacity, this.yCapacity, this.targetZ);
+    // Ensure all values are treated as numbers
+    const x = Number(this.xCapacity);
+    const y = Number(this.yCapacity);
+    const z = Number(this.targetZ);
+
+    // Validate inputs
+    if (isNaN(x) || isNaN(y) || isNaN(z) || x <= 0 || y <= 0 || z < 0) {
+      this.solution = null;
+      return;
+    }
+
+    this.solution = waterJugSolver(x, y, z);
   }
 }
