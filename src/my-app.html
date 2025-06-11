@@ -16,9 +16,13 @@
     <input type="number" value.bind="targetZ" min="0" step="1" />
   </div>
 
-  <button click.trigger="solve()">Solve</button>
+  <button click.trigger="solve()" disabled.bind="loading">Solve</button>
 
-  <div if.bind="solution === null">
+  <!-- Spinner shown when loading -->
+  <div if.bind="loading" class="spinner"></div>
+
+  <!-- No solution message (only when not loading) -->
+  <div if.bind="solution === null && !loading">
     <h2>No Solution</h2>
   </div>
 

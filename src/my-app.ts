@@ -6,8 +6,10 @@ export class MyApp {
   targetZ: number = 4;
 
   solution: JugState[] | null = null;
+  loading: boolean = false;
 
-  solve() {
+  async solve() {
+    this.loading = true;
     // Ensure all values are treated as numbers
     const x = Number(this.xCapacity);
     const y = Number(this.yCapacity);
@@ -18,7 +20,15 @@ export class MyApp {
       this.solution = null;
       return;
     }
+    try {
+      this.solution = waterJugSolver(x, y, z);
 
-    this.solution = waterJugSolver(x, y, z);
+      // If solver returns empty array, treat as no solution
+      if (!this.solution?.length) {
+        this.solution = null;
+      }
+    } finally {
+      this.loading = false; // hide spinner
+    }
   }
 }
