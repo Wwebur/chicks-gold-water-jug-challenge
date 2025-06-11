@@ -1,0 +1,45 @@
+<template>
+    <h1>Water Jug Challenge</h1>
+  
+    <div>
+      <label>Bucket X (capacity):</label>
+      <input type="number" value.bind="xCapacity" min="1" />
+    </div>
+  
+    <div>
+      <label>Bucket Y (capacity):</label>
+      <input type="number" value.bind="yCapacity" min="1" />
+    </div>
+  
+    <div>
+      <label>Target Amount Z:</label>
+      <input type="number" value.bind="targetZ" min="1" />
+    </div>
+  
+    <button click.trigger="solve()">Solve</button>
+  
+    <div if.bind="solution === null">
+      <h2>No Solution</h2>
+    </div>
+  
+    <div if.bind="solution?.length">
+      <h2>Solution Steps</h2>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Bucket X</th>
+            <th>Bucket Y</th>
+            <th>Explanation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr repeat.for="step of solution">
+            <td>${step.x}</td>
+            <td>${step.y}</td>
+            <td>${step.explanation}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </template>
+  
